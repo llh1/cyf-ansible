@@ -1,0 +1,18 @@
+- name: set Google gpg key
+  apt_key:
+    url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+    state: present
+
+- name: add Chrome repository
+  apt_repository:
+    repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
+    filename: chrome
+    state: present
+    update_cache: yes
+
+- name: install Google Chrome
+  apt:
+    name: google-chrome-stable
+
+- name: install Postman
+  command: snap install postman --classic

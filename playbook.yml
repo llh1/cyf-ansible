@@ -1,0 +1,5 @@
+- hosts: all
+  name: Setup CYF machines
+  become: yes
+  roles:
+    - cyf

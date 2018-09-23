@@ -1,0 +1,17 @@
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: install base libraries
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - build-essential
+    - git
+    - curl
+    - snapd
+    - gconf2
+    - libasound2
+    - libgtk2.0-0
+    - libxss1

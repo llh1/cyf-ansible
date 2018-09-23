@@ -1,0 +1,23 @@
+- name: set Microsoft gpg key
+  apt_key:
+    url: "https://packages.microsoft.com/keys/microsoft.asc"
+    state: present
+
+- name: add VSCode repository
+  apt_repository:
+    repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
+    filename: vscode
+    state: present
+
+- name: install VSCode
+  apt:
+    name: code
+
+- name: install VSCode extensions
+  become: yes
+  become_user: "{{ username }}"
+  command: "code --install-extension {{ item }}"
+  with_items:
+    - ms-python.python
+    - esbenp.prettier-vscode
+    - mgmcdermott.vscode-language-babel

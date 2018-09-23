@@ -1,0 +1,21 @@
+- name: add git-core repository
+  apt_repository:
+    repo: ppa:git-core/ppa
+    filename: git-core
+    state: present
+    update_cache: yes
+
+- name: install git
+  apt:
+    name: git
+
+- name: create .npm-global directory
+  file:
+    path: "/home/{{ username }}/.npm-global"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+
+- name: update global package install directory
+  become: yes
+  become_user: "{{ username }}"
+  shell: npm config set prefix "/home/{{ username }}/.npm-global"

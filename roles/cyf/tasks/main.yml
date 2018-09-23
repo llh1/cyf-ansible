@@ -1,0 +1,8 @@
+- include_tasks: common.yml
+- include_tasks: shell.yml
+- include_tasks: git.yml
+- include_tasks: vscode.yml 
+- include_tasks: nodejs.yml
+- include_tasks: slack.yml
+- include_tasks: chrome.yml
+- include_tasks: libreoffice.yml

@@ -1,0 +1,2 @@
+username: vagrant
+group: vagrant

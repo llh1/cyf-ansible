@@ -1,0 +1,31 @@
+- name: install zsh
+  apt:
+    name: zsh
+    state: present
+
+- name: clone oh my zsh
+  git: 
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: /home/{{ username }}/.oh-my-zsh
+
+- name: check if .zshrc exists
+  stat: 
+    path: /home/{{ username }}/.zshrc
+  register: zshrc
+
+- name: save current .zshrc
+  shell: mv /home/{{ username }}/.zshrc /home/{{ username }}/.zshrc.pre-oh-my-zsh
+  when: zshrc.stat.exists
+
+- name: copy .zshrc template from oh my zsh
+  shell: cp /home/{{ username }}/.oh-my-zsh/templates/zshrc.zsh-template /home/{{ username }}/.zshrc
+
+- name: setup .zshrc with oh my zsh
+  shell: |
+    sed "/^export ZSH=/ c\\
+    export ZSH=\"/home/{{ username }}/.oh-my-zsh\"
+    " /home/{{ username }}/.zshrc > /home/{{ username }}/.zshrc-omztemp
+    mv -f /home/{{ username }}/.zshrc-omztemp /home/{{ username }}/.zshrc
+
+- name: change user shell to zsh
+  shell: chsh -s /bin/zsh "{{ username }}"
