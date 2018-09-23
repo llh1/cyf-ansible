@@ -7,3 +7,15 @@
   apt:
     name: npm
     state: present
+
+- name: create .npm-global directory
+  file:
+    path: "/home/{{ username }}/.npm-global"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    state: directory
+
+- name: update global package install directory
+  become: yes
+  become_user: "{{ username }}"
+  shell: npm config set prefix "/home/{{ username }}/.npm-global"
