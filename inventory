@@ -1,1 +1,8 @@
-cyf ansible_ssh_host=10.0.2.15
+machine.hostname    ansible_ssh_host=10.0.1.15 ansible_user=ansible ansible_ssh_pass=password
+machine2.hostname   ansible_ssh_host=10.0.1.16 ansible_user=ansible ansible_ssh_pass=password
+
+# OR to run locally
+
+localhost   ansible_connection=local
+
+

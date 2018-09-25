@@ -5,4 +5,4 @@
 - include_tasks: nodejs.yml
 - include_tasks: slack.yml
 - include_tasks: chrome.yml
-- include_tasks: libreoffice.yml
+# - include_tasks: libreoffice.yml # looks like libre office is shipped with Ubuntu by default
