@@ -9,6 +9,8 @@ Ansible playbook to provision Code Your Future laptops, based on Linux Ubuntu.
 - ZSH and Oh my ZSH
 - Slack
 - Visual Studio Code (with prettier, python and babel extensions)
+- PostgreSQL (connect with `sudo -u postgres psql`)
+- MongoDB 
 
 ## Prerequisities
 
